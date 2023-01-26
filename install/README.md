@@ -21,4 +21,13 @@
 
 
 ## Configuration
-* TODO - describe how to pull down the dotfiles from github
+#### Remove old nvim config
+```shell
+Remove-Item $env:LOCALAPPDATA\nvim
+Remove-Item $env:LOCALAPPDATA\nvim-data
+```
+
+#### Pull config from Github
+```shell
+git clone https://github.com/patrickmoore/nvim-config.git $env:LOCALAPPDATA\nvim
+```
