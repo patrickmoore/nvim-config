@@ -10,7 +10,7 @@ function CreateShortcut {
     $shortcut = $shell.CreateShortcut($env:APPDATA + '\Microsoft\Windows\Start Menu\Programs\' + '\nvim.lnk')
     $shortcut.TargetPath = 'wt' 
     $shortcut.Arguments = '-p "Neovim" C:\Program Files\Neovim\bin\nvim.exe'
-    $shortcut.IconLocation = 'C:\Program Files\Neovim\bin\nvim-qt.exe,0'
+    $shortcut.IconLocation = '"C:\Program Files\Neovim\share\nvim\runtime\neovim.ico"'
     $shortcut.Save()
 }
 
@@ -23,7 +23,7 @@ function CreateExplorerCommands {
     # Shell
     New-Item -Path 'Registry::HKCR\`*\shell' -Name 'nvim' -Force
     Set-ItemProperty -Path 'Registry::HKCR\`*\shell\nvim' -Name '(Default)' -Value 'Edit with Neovim' -Force
-    Set-ItemProperty -Path 'Registry::HKCR\`*\shell\nvim' -Name 'Icon' -Value '"C:\Program Files\Neovim\bin\nvim-qt.exe"' -Force
+    Set-ItemProperty -Path 'Registry::HKCR\`*\shell\nvim' -Name 'Icon' -Value '"C:\Program Files\Neovim\share\nvim\runtime\neovim.ico"' -Force
 
     New-Item -Path 'Registry::HKCR\`*\shell\nvim' -Name 'command' -Force
     Set-ItemProperty -Path 'Registry::HKCR\`*\shell\nvim\command' -Name '(Default)' -Value 'wt -p "Neovim" C:\Program Files\Neovim\bin\nvim.exe "%1"' -Force
@@ -31,7 +31,7 @@ function CreateExplorerCommands {
     # Directory Shell
     New-Item -Path 'Registry::HKCR\directory\shell' -Name 'nvim' -Force
     Set-ItemProperty -Path 'Registry::HKCR\directory\shell\nvim' -Name '(Default)' -Value 'Neovim Here' -Force
-    Set-ItemProperty -Path 'Registry::HKCR\directory\shell\nvim' -Name 'Icon' -Value '"C:\Program Files\Neovim\bin\nvim-qt.exe"' -Force
+    Set-ItemProperty -Path 'Registry::HKCR\directory\shell\nvim' -Name 'Icon' -Value '"C:\Program Files\Neovim\share\nvim\runtime\neovim.ico"' -Force
 
     New-Item -Path 'Registry::HKCR\directory\shell\nvim' -Name 'command' -Force
     Set-ItemProperty -Path 'Registry::HKCR\directory\shell\nvim\command' -Name '(Default)' -Value 'wt -p "Neovim" C:\Program Files\Neovim\bin\nvim.exe "%v"' -Force
@@ -39,7 +39,7 @@ function CreateExplorerCommands {
     # Directory Background
     New-Item -Path 'Registry::HKCR\directory\background\shell' -Name 'nvim' -Force
     Set-ItemProperty -Path 'Registry::HKCR\directory\background\shell\nvim' -Name '(Default)' -Value '&Neovim Here' -Force
-    Set-ItemProperty -Path 'Registry::HKCR\directory\background\shell\nvim' -Name 'Icon' -Value '"C:\Program Files\Neovim\bin\nvim-qt.exe"' -Force
+    Set-ItemProperty -Path 'Registry::HKCR\directory\background\shell\nvim' -Name 'Icon' -Value '"C:\Program Files\Neovim\share\nvim\runtime\neovim.ico"' -Force
 
     New-Item -Path 'Registry::HKCR\directory\background\shell\nvim' -Name 'command' -Force
     Set-ItemProperty -Path 'Registry::HKCR\directory\background\shell\nvim\command' -Name '(Default)' -Value 'wt -p "Neovim" C:\Program Files\Neovim\bin\nvim.exe "%v"' -Force
